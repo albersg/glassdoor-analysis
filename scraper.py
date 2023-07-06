@@ -26,8 +26,10 @@ def scrap_web(location, job):
 
     driver.get(website)
 
+    # Let the full web load
     time.sleep(5)
 
+    # Introduce the specified values in the search boxes
     search_job = driver.find_element(By.ID, 'sc.keyword')
     search_job.send_keys(job)
 
@@ -54,24 +56,27 @@ def scrap_web(location, job):
 
     num_pages = num_pages.split()[-1]
 
+    # Accept the cookies, so we can click on the different items
     time.sleep(3)
     accept_cookies = driver.find_element(By.ID, 'onetrust-accept-btn-handler')
     accept_cookies.click()
 
     first_job = True
 
+    # Iterate through the different pages
     for page in range(int(num_pages)):
         time.sleep(4)
         # Get all the jobs present in the current page
         jobs = driver.find_element(By.XPATH, '//*[@id="MainCol"]/div[1]/ul').find_elements(By.TAG_NAME, 'li')
 
+        # Iterate through all the jobs
         for job in jobs:
             try:
                 time.sleep(1)
                 try:
                     job.click()
                 except Exception:
-                    print("Click?")
+                    print("Some strange error occurred while clicking")
 
                 while first_job:
                     try:
@@ -87,7 +92,7 @@ def scrap_web(location, job):
                         driver.refresh()
                         continue
                     except Exception:
-                        print("Login modal??")
+                        print("Some strange error occurred while closing the login modal")
                     else:
                         first_job = False
                         break
@@ -96,16 +101,19 @@ def scrap_web(location, job):
 
                 job_data = {}
 
+                # Get the number of days since the offer was published
                 try:
                     published_ago = job.find_element(By.CSS_SELECTOR, '[data-test="job-age"]').text
                 except NoSuchElementException:
                     published_ago = -1
 
+                # Get the estimated salary for the job
                 try:
                     salary = job.find_element(By.CLASS_NAME, 'salary-estimate').text
                 except NoSuchElementException:
                     salary = -1
 
+                # Get the rating of the employeer
                 try:
                     rating = driver.find_element(By.CSS_SELECTOR, 'span[data-test="detailRating"]').text
                 except TimeoutException:
@@ -117,16 +125,19 @@ def scrap_web(location, job):
                 except Exception:
                     print("rating??")
 
+                # Get the employeer
                 try:
                     employer = driver.find_element(By.CSS_SELECTOR, '[data-test="employerName"]').text
                 except NoSuchElementException:
                     employer = -1
 
+                # Get the title of the job
                 try:
                     job_title = driver.find_element(By.CSS_SELECTOR, 'div[data-test="jobTitle"]').text
                 except NoSuchElementException:
                     job_title = -1
 
+                # Get the location where the job is located
                 try:
                     location_job = driver.find_element(By.CSS_SELECTOR, '[data-test="location"]').text
                 except NoSuchElementException:
@@ -139,6 +150,8 @@ def scrap_web(location, job):
                 job_data['JobTitle'] = job_title
                 job_data['Location'] = location_job
 
+                # Get the different fields of info for the employer. It is not the same for all the employers,
+                # so we need to get all the div and iterate through it
                 container = driver.find_element(By.CLASS_NAME, 'd-flex.flex-wrap')
                 cells = container.find_elements(By.CLASS_NAME, 'css-rmzuhb.e1pvx6aw0')
 
@@ -148,6 +161,7 @@ def scrap_web(location, job):
 
                     job_data[name] = value
 
+                # Show the data obtained for each job, and store it in the list
                 print(job_data)
                 jobs_info.append(job_data)
 
@@ -158,9 +172,11 @@ def scrap_web(location, job):
             except Exception as e:
                 print('Error desconocido:', str(e))
 
+        # Next page
         next_page = driver.find_element(By.CSS_SELECTOR, 'button.nextButton.job-search-opoz2d')
         next_page.click()
 
+    # Store all the info from the list in a Pandas dataframe
     df = pd.DataFrame(jobs_info)
 
     df.to_csv('datos.csv', index=False)
@@ -169,6 +185,7 @@ def scrap_web(location, job):
 
 
 if __name__ == "__main__":
+    # Specify the location and the job name that you are searching
     location = ""
     job = "AI Engineer"
     scrap_web(location, job)
