@@ -179,7 +179,7 @@ def scrap_web(location, job):
     # Store all the info from the list in a Pandas dataframe
     df = pd.DataFrame(jobs_info)
 
-    df.to_csv('datos.csv', index=False)
+    df.to_csv('data.csv', index=False)
 
     driver.quit()
 
