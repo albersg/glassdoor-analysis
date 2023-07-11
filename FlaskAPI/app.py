@@ -13,7 +13,9 @@ def load_models():
 app = Flask(__name__)
 @app.route('/predict', methods=['GET'])
 def predict():
-    x = np.array(data_in).reshape(1,-1)
+    request_json = request.get_json()
+    x_in =  request_json['input']
+    x = np.array(x_in).reshape(1,-1)
     model = load_models()
     prediction = model.predict(x)[0]
     response = json.dumps({'response': prediction})
