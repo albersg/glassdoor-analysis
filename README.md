@@ -12,7 +12,7 @@ The project is structured into the following components:
 
 2. **Data Cleaning**: A Jupyter Notebook (`data_cleaning.ipynb`) that demonstrates the process of cleaning and preprocessing the scraped data. This includes handling missing values, removing duplicates, standardizing formats, and transforming variables to make them suitable for analysis.
 
-3. **Exploratory Data Analysis (EDA)**: A Jupyter Notebook (`eda.ipynb`) that showcases the EDA process to gain insights and extract meaningful patterns from the cleaned data. This includes data visualization, statistical analysis, and feature engineering.
+3. **Exploratory Data Analysis (EDA)**: A Jupyter Notebook (`data_analysis.ipynb`) that showcases the EDA process to gain insights and extract meaningful patterns from the cleaned data. This includes data visualization, statistical analysis, and feature engineering.
 
 4. **Model Building**: A Jupyter Notebook (`model_building.ipynb`) that presents the construction and evaluation of a predictive model using machine learning techniques. The notebook covers data splitting, feature selection, model training, hyperparameter tuning, and model evaluation metrics.
 
@@ -20,15 +20,15 @@ The project is structured into the following components:
 
 ## Usage
 
-1. **Run the Glassdoor scraper**: The glassdoor_scraper.py will scrape Glassdoor job listings and save the data in a structured format.
+1. **Run the Glassdoor scraper**: The (`scraper.py`) will scrape Glassdoor job listings and save the data in a structured format.
 
-2. **Perform data cleaning**: Open the data_cleaning.ipynb notebook using Jupyter Notebook or any compatible environment. Follow the code within the notebook to clean and preprocess the scraped data.
+2. **Perform data cleaning**: Open the (`data_cleaning.ipynb`) notebook using Jupyter Notebook or any compatible environment. Follow the code within the notebook to clean and preprocess the scraped data.
 
-3. **Conduct exploratory data analysis**: Open the eda.ipynb notebook using Jupyter Notebook or any compatible environment. Follow the code notebook to explore and visualize the cleaned data.
+3. **Conduct exploratory data analysis**: Open the (`data_analysis.ipynb`) notebook using Jupyter Notebook or any compatible environment. Follow the code notebook to explore and visualize the cleaned data.
 
-4. **Build and evaluate the predictive model**: Open the model_building.ipynb notebook using Jupyter Notebook or any compatible environment. Follow the code to train, tune, and evaluate the predictive model using the cleaned data.
+4. **Build and evaluate the predictive model**: Open the (`model_building.ipynb`) notebook using Jupyter Notebook or any compatible environment. Follow the code to train, tune, and evaluate the predictive model using the cleaned data.
 
-5. **Deploy the model as a Flask API**: the app.py file will start the Flask API, and you can access it through http://localhost:5000 or the specified host and port.
+5. **Deploy the model as a Flask API**: the (`app.py`) file will start the Flask API, and you can access it through http://localhost:5000 or the specified host and port.
 
 ## License
 This project is licensed under the MIT License.
