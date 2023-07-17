@@ -20,15 +20,15 @@ The project is structured into the following components:
 
 ## Usage
 
-1. **Run the Glassdoor scraper**: The (`scraper.py`) will scrape Glassdoor job listings and save the data in a structured format.
+1. **Run the Glassdoor scraper**: Use the Python script `scraper.py` to scrape Glassdoor job listings and save the data in a structured format.
 
-2. **Perform data cleaning**: Open the (`data_cleaning.ipynb`) notebook using Jupyter Notebook or any compatible environment. Follow the code within the notebook to clean and preprocess the scraped data.
+2. **Perform data cleaning**: Open the Jupyter Notebook `data_cleaning.ipynb` using Jupyter Notebook or any compatible environment. Follow the code within the notebook to clean and preprocess the scraped data.
 
-3. **Conduct exploratory data analysis**: Open the (`data_analysis.ipynb`) notebook using Jupyter Notebook or any compatible environment. Follow the code notebook to explore and visualize the cleaned data.
+3. **Conduct exploratory data analysis**: Open the Jupyter Notebook `data_analysis.ipynb` using Jupyter Notebook or any compatible environment. Follow the code notebook to explore and visualize the cleaned data.
 
-4. **Build and evaluate the predictive model**: Open the (`model_building.ipynb`) notebook using Jupyter Notebook or any compatible environment. Follow the code to train, tune, and evaluate the predictive model using the cleaned data.
+4. **Build and evaluate the predictive model**: Open the Jupyter Notebook `model_building.ipynb` using Jupyter Notebook or any compatible environment. Follow the code to train, tune, and evaluate the predictive model using the cleaned data.
 
-5. **Deploy the model as a Flask API**: the (`app.py`) file will start the Flask API, and you can access it through http://localhost:5000 or the specified host and port.
+5. **Deploy the model as a Flask API**: Run the Flask application using the file `app.py`. The API will be accessible through http://localhost:5000 or the specified host and port.
 
 ## License
 This project is licensed under the MIT License.
